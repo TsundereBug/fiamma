@@ -2,6 +2,7 @@ package com.tsunderebug.fiamma
 
 import com.googlecode.lanterna
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory
+import com.tsunderebug.fiamma.input.KeyStroke
 
 object Terminal {
 
@@ -29,6 +30,9 @@ class Terminal(private[Terminal] val provider: lanterna.terminal.Terminal) {
   lazy val sgr: Terminal.SGRContainer = new Terminal.SGRContainer(this)
 
   def clear(): Unit = provider.clearScreen()
+  def flush(): Unit = provider.flush()
+
+  def input: KeyStroke = KeyStroke(provider.readInput())
 
   def enterPrivateMode(): Unit = provider.enterPrivateMode()
   def exitPrivateMode(): Unit = provider.exitPrivateMode()
