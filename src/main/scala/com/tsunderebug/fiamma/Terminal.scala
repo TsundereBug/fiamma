@@ -47,4 +47,7 @@ class Terminal(private[Terminal] val provider: lanterna.terminal.Terminal) {
   }
   def cursorPosition_=(position: (Int, Int)): Unit = provider.setCursorPosition(position._1, position._2)
 
+  // FIXME
+  def putCharacter(c: Char): Unit = provider.putCharacter(c)
+
 }
