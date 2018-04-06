@@ -1,10 +1,11 @@
 package com.tsunderebug.fiamma
 
 import com.googlecode.lanterna
+import com.googlecode.lanterna.terminal.DefaultTerminalFactory
 
 object Terminal {
 
-  def apply(implicit terminalFactory: lanterna.terminal.TerminalFactory): Terminal = new Terminal(terminalFactory.createTerminal())
+  def apply()(implicit terminalFactory: lanterna.terminal.TerminalFactory = new DefaultTerminalFactory): Terminal = new Terminal(terminalFactory.createTerminal())
 
   private[Terminal] class ResizeListeners(terminal: Terminal) {
 
